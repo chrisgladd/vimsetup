@@ -3,6 +3,15 @@
 " probably not necessary, but...
 set nocompatible
 
+
+" Use pathogen to easily modify the runtime path to include all plugins under
+" the ~/.vim/bundle directory
+filetype off                    " force reloading *after* pathogen loaded
+call pathogen#infect()
+call pathogen#helptags()
+filetype plugin indent on       " enable detection, plugins and indenting in one step
+
+
 " change the leader key to ,
 let mapleader=","
 
@@ -195,6 +204,15 @@ endfunc
 "============= Buffers =============
 
 set hidden 	" buffers can exist in background without being in a window
+set switchbuf=useopen "Use the open buffer instead of opening a new one"
+
+"============= Windows =============
+
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+nnoremap <leader>w <C-w>v<C-w>l
 
 "============= Spell Check =============
 
@@ -211,7 +229,7 @@ else
 	set nu		" otherwise set absolute, because there is no rnu
 endif
 
-set cul		" highlight cursor line 
+" set cul		" highlight cursor line 
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 
 " toggle between relative and absolute line numbers
@@ -230,12 +248,12 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 " show line and column markers
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 if v:version >= 703
     " for some reason this does not work in 7.2
     " highlight column 80
-    set colorcolumn=80
+    " set colorcolumn=80
 endif
 
 set scrolloff=3	" 3 line offset when scrolling
@@ -358,7 +376,10 @@ let g:tex_flavor='latex'
 
 "============== Pathogen ==============
 
-call pathogen#infect()
+" Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+" call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
 
 
 "============== Plugin Specific Settings ==============
@@ -373,19 +394,21 @@ if has('gui_running')
 	colorscheme mustang
 	"colorscheme badwolf
 else
+	set background=dark
 	" specific settings for terminal 
-	" set t_Co=256                        " force vim to use 256 colors
+	set t_Co=256                        " force vim to use 256 colors
 	" let g:solarized_termcolors=256      " use solarized 256 fallback
 	" set background=light                " change this if you want dark scheme
 
     " Tell vim to change the shape of the cursor based on mode
 	" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    colorscheme mustang 
+    " colorscheme mustang 
     " colorscheme badwolf
+    colorscheme grb256
 endif
 
-" enable solarized color scheme
+" enable solarzed color scheme
 " colorscheme solarized
 
 " change the color of the column 80
