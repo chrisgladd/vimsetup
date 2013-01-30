@@ -83,7 +83,7 @@ inoremap <down> <C-O>gj
 " run ctags on current directory recursively
 nnoremap <f6> :!ctags -R<cr>
 
-" pressing \<space> clears the search highlights
+" pressing \<space> clears the search highlghts
 nmap <silent> <leader><space> :nohlsearch<CR> 
 
 " break a line at cursor 
@@ -103,6 +103,9 @@ nnoremap <S-Tab> :bnext<CR>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
+
+" clear search highlights on escape
+nnoremap <esc> :noh<return><esc>
 
 " run current PHP file through php interpreter
 ":autocmd FileType php noremap <leader>p :w!<CR>:!php %<CR>
@@ -366,21 +369,24 @@ let g:miniBufExplorerMoreThanOne=3
 " Solarized color scheme setup
 if has('gui_running')
 	" use the light (yellowish background) scheme in GUI
-	set background=light
+	set background=dark
+	colorscheme mustang
+	"colorscheme badwolf
 else
 	" specific settings for terminal 
-	set t_Co=256                        " force vim to use 256 colors
-	let g:solarized_termcolors=256      " use solarized 256 fallback
-	set background=light                " change this if you want dark scheme
+	" set t_Co=256                        " force vim to use 256 colors
+	" let g:solarized_termcolors=256      " use solarized 256 fallback
+	" set background=light                " change this if you want dark scheme
 
     " Tell vim to change the shape of the cursor based on mode
-	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
+	" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    " let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    colorscheme mustang 
+    " colorscheme badwolf
 endif
 
 " enable solarized color scheme
-colorscheme solarized
+" colorscheme solarized
 
 " change the color of the column 80
 " this needs to be called after solarized
@@ -395,7 +401,7 @@ nnoremap <f2> :TlistToggle<cr>
 
 " force snipmate accept custom defined snippets on windows
 if has('win32')
-	let g:snippets_dir="c:/Users/luke/.vim/bundle/snipmate/snippets/,c:/Users/luke/.vim/bundle/snipmate-custom-snippets/snippets"
+	let g:snippets_dir="C:/Vim/.vim/bundle/snipmate/snippets/,C:/Vim/.vim/bundle/snipmate-custom-snippets/snippets"
 endif
 
 " MiniBufExpl Plugin Settings
@@ -409,7 +415,7 @@ nnoremap <C-P> :call PhpDoc()<CR>
 
 " fixing comment style for PHP (this got changed somewhere)
 au Filetype php set comments=sr:/**,m:*\ ,ex:*/,://
-=======
+
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
@@ -439,5 +445,3 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
-
->>>>>>> 3c84116de71b6596634f9f1a4db64c41d06a248d
