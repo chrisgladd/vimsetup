@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "============= Runtime Stuff =============
 
 " probably not necessary, but...
