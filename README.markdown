@@ -1,3 +1,6 @@
+Built on top of the vim setup from
+https://github.com/maciakl/.vim
+
 My Personal Vim Directory
 ===
 
