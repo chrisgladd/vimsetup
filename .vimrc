@@ -293,6 +293,7 @@ set hlsearch		" highlights searches
 
 set noerrorbells 	" suppress audible bell
 set novisualbell 	" suppress bell blink
+set noeb vb t_vb=   " supress sounds "
 
 "============= History =============
 
