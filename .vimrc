@@ -11,7 +11,6 @@ call pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on       " enable detection, plugins and indenting in one step
 
-
 " change the leader key to ,
 let mapleader=","
 
@@ -20,6 +19,7 @@ if v:version >= 703
 	set cryptmethod=blowfish
 endif
 
+set backupdir=~/.vim/tmp,/tmp,$HOME/Local\ Settings/Temp
 
 " windows stuff (ignore on Linux)
 if has('win32')
