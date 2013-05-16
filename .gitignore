@@ -1,3 +1,5 @@
-.netrwhist
+/*.netrwhist*/
 tags
 *.*~
+tmp
+tmp/*
