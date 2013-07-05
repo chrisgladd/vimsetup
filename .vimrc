@@ -375,6 +375,9 @@ set grepprg=grep\ -nH\ $*
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+" CtrlP ignore
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 "============== Pathogen ==============
 
 " Use pathogen to easily modify the runtime path to include all
