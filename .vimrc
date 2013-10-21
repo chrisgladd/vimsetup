@@ -376,7 +376,10 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 " CtrlP ignore
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git'
+let g:ctrlp_root_markers = '.Gruntfile\|.gruntfile'
+let g:ctrlp_working_path_mode = 'a'
+set wildignore += *//node_modules//*,*//bower_components//*,*//test//coverage//*
 
 "============== Pathogen ==============
 
