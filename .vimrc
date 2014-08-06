@@ -277,6 +277,9 @@ set shiftwidth=4    " makes indents 4 spaces wide as well
 set expandtab 		" actually, expand tabs into spaces
 " set noexpandtab 	" don't expand tabs to spaces (cause fuck that)
 
+" use 2 tab spaces for less files
+autocmd Filetype less setlocal ts=2 sts=2 sw=2
+
 set backspace=indent,eol,start
 
 au FocusLost * silent! :wa	" save when switching focus 
@@ -361,6 +364,7 @@ set nowb 			" suppress creation of ~ files
 
 " force txt files to be highlighted as html
 au BufRead,BufNewFile *.txt setfiletype html
+au BufRead,BufNewFile *.json setfiletype javascript
 
 " force php files to be treated as php/html - necessary for snipmate to work
 "au BufRead,BufNewFile *.php set filetype=php.html
@@ -376,7 +380,10 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 " CtrlP ignore
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_root_markers = '.Gruntfile\|.gruntfile'
+let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git|deploy\|partial\**\*.template.js'
+let g:ctrlp_working_path_mode = 'a'
+set wildignore+=*\\test\\coverage\\*,*\\node_modules\\*,*\\bower_components\\*,*\\partial\\**\*.template.js*
 
 "============== Pathogen ==============
 
