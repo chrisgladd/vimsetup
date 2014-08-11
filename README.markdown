@@ -14,7 +14,7 @@ On Linux and Mac:
 
     rm -rf .vim
     rm .vimrc
-    git clone git@github.com:maciakl/.vim.git
+    git clone git@github.com:chrisgladd/vimsetup.git
     ln -s .vim/.vimrc .vimrc
     cd .vim
     git submodule init
@@ -24,7 +24,7 @@ On Windows:
 
     rmdir /s /q vimfiles
     del _vimrc
-    git clone git@github.com:maciakl/.vim.git
+    git clone git@github.com:chrisgladd/vimsetup.git
     mklink /d vimfiles .vim
     mklink /h _vimrc .vim\.vimrc
     cd .vim
@@ -35,7 +35,7 @@ On Windows XP:
 
 	rmdir /s /q vimfiles
     del _vimrc
-    git clone git@github.com:maciakl/.vim.git
+    git clone git@github.com:chrisgladd/vimsetup.git
     junction vimfiles .vim
     fsutil hardlink create _vimrc .vim\.vimrc
     cd .vim

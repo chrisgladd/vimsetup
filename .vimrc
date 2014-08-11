@@ -277,8 +277,9 @@ set shiftwidth=4    " makes indents 4 spaces wide as well
 set expandtab 		" actually, expand tabs into spaces
 " set noexpandtab 	" don't expand tabs to spaces (cause fuck that)
 
-" use 2 tab spaces for less files
+" use 2 tab spaces for less/jade files
 autocmd Filetype less setlocal ts=2 sts=2 sw=2
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 
 set backspace=indent,eol,start
 
