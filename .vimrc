@@ -251,6 +251,7 @@ set expandtab 		" actually, expand tabs into spaces
 " use 2 tab spaces for less/jade files
 autocmd Filetype less setlocal ts=2 sts=2 sw=2
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2
+autocmd Filetype pug setlocal ts=2 sts=2 sw=2
 
 set backspace=indent,eol,start
 
@@ -386,9 +387,6 @@ endif
 " change the color of the column 80
 " this needs to be called after solarized
 highlight ColorColumn guibg=lightyellow
-
-" TagList shortcut
-nnoremap <f2> :TlistToggle<cr>
 
 " MiniBufExpl Plugin Settings
 let g:miniBufExplMapCTabSwitchBufs = 1 
