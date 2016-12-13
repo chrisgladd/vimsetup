@@ -3,7 +3,6 @@
 " probably not necessary, but...
 set nocompatible
 
-
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
 filetype off                    " force reloading *after* pathogen loaded
@@ -39,18 +38,6 @@ elseif has('mac')
 else
     " use Inconsolata everywhere else 
     set gfn=Inconsolata\ Medium\ 12
-endif
-
-" Enable UTF-8 support so that I can type polish characters
-if has("multi_byte")
-	" set encoding on terminal if not set
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	" force utf-8
-	set encoding=utf-8
-	setglobal fileencoding=utf-8 bomb
-	set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 "============= GUI Options ============= 
@@ -89,9 +76,6 @@ inoremap <down> <C-O>gj
 :nnoremap <F10> "=strftime("%a %b %d, %Y")<CR>P
 :inoremap <F10> <C-R>=strftime("%a %b %d, %Y")<CR>
 
-" run ctags on current directory recursively
-nnoremap <f6> :!ctags -R<cr>
-
 " pressing \<space> clears the search highlghts
 nmap <silent> <leader><space> :nohlsearch<CR> 
 
@@ -115,11 +99,6 @@ set showmode
 
 " clear search highlights on escape
 nnoremap <esc> :noh<return><esc>
-
-" run current PHP file through php interpreter
-":autocmd FileType php noremap <leader>p :w!<CR>:!php %<CR>
-" run current PHP file through php linter (syntax check) check
-":autocmd FileType php noremap <leader>l :!php -l %<CR>
 
 " use \y and \p to copy and paste from system clipboard
 noremap <leader>y "+y
@@ -194,9 +173,9 @@ command! MAC set ff=mac 	" force mac style line endings
 " This will display the path of the current file in the status line
 " It will also copy the path to the unnamed register so it can be pasted
 " with p or C-r C-r
-command! FILEPATH call g:getFilePath()
+command! FILEPATH call g:GetFilePath()
 
-function! g:getFilePath()
+function! g:GetFilePath()
     let @" = expand("%:p")
     echom "Current file:" expand("%:p")
 endfunc
@@ -229,7 +208,6 @@ else
 	set nu		" otherwise set absolute, because there is no rnu
 endif
 
-" set cul		" highlight cursor line 
 set nopaste	" pasting with auto-indent disabled (breaks bindings in cli vim)
 
 " toggle between relative and absolute line numbers
@@ -250,15 +228,9 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 set cursorline
 " set cursorcolumn
 
-if v:version >= 703
-    " for some reason this does not work in 7.2
-    " highlight column 80
-    " set colorcolumn=80
-endif
-
 set scrolloff=3	" 3 line offset when scrolling
 
-" turn off the *FUCKING* cursor blink
+" turn off the cursor blink
 set guicursor=a:blinkon0
 
 "============= Formatting, Indentation & Behavior =============
@@ -275,7 +247,6 @@ set tabstop=4
 set softtabstop=4 	" makes backspace treat 4 spaces like a tab
 set shiftwidth=4    " makes indents 4 spaces wide as well
 set expandtab 		" actually, expand tabs into spaces
-" set noexpandtab 	" don't expand tabs to spaces (cause fuck that)
 
 " use 2 tab spaces for less/jade files
 autocmd Filetype less setlocal ts=2 sts=2 sw=2
@@ -365,10 +336,6 @@ set nowb 			" suppress creation of ~ files
 
 " force txt files to be highlighted as html
 au BufRead,BufNewFile *.txt setfiletype html
-au BufRead,BufNewFile *.json setfiletype javascript
-
-" force php files to be treated as php/html - necessary for snipmate to work
-"au BufRead,BufNewFile *.php set filetype=php.html
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
@@ -382,16 +349,9 @@ let g:tex_flavor='latex'
 
 " CtrlP ignore
 let g:ctrlp_root_markers = '.Gruntfile\|.gruntfile'
-let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git|deploy\|partial\**\*.template.js'
+let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|DS_Store\|git|deploy\|partial\**\*.template.js\|test\partial'
 let g:ctrlp_working_path_mode = 'a'
 set wildignore+=*\\test\\coverage\\*,*\\node_modules\\*,*\\bower_components\\*,*\\partial\\**\*.template.js*
-
-"============== Pathogen ==============
-
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
-" call pathogen#helptags()
-" call pathogen#runtime_append_all_bundles()
 
 
 "============== Plugin Specific Settings ==============
@@ -427,26 +387,14 @@ endif
 " this needs to be called after solarized
 highlight ColorColumn guibg=lightyellow
 
-
-" bind NERDTree to F1 (we don't need help)
-nnoremap <f1> :NERDTreeToggle<cr>
-
 " TagList shortcut
 nnoremap <f2> :TlistToggle<cr>
-
-" force snipmate accept custom defined snippets on windows
-if has('win32')
-	let g:snippets_dir="C:/Vim/.vim/bundle/snipmate/snippets/,C:/Vim/.vim/bundle/snipmate-custom-snippets/snippets"
-endif
 
 " MiniBufExpl Plugin Settings
 let g:miniBufExplMapCTabSwitchBufs = 1 
 
 " key binding for the Gundo (undo preview) plugin
 nnoremap <F7> :GundoToggle<CR>
-
-" bind the PHPDoc command to C-P only for php files
-nnoremap <C-P> :call PhpDoc()<CR> 
 
 " fixing comment style for PHP (this got changed somewhere)
 au Filetype php set comments=sr:/**,m:*\ ,ex:*/,://
@@ -455,28 +403,3 @@ set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
-
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction

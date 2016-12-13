@@ -4,26 +4,13 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/vim-supertab"]
-	path = bundle/vim-supertab
-	url = https://github.com/tsaleh/vim-supertab.git
 [submodule "bundle/vim-autoclose"]
 	path = bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
     ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/vim-align"]
-	path = bundle/vim-align
-	url = https://github.com/tsaleh/vim-align.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
-    ignore = dirty
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
     ignore = dirty
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
@@ -36,19 +23,13 @@
 	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "bundle/vim-matchit"]
 	path = bundle/vim-matchit
-	url = https://github.com/edsono/vim-matchit.git
+	url = https://github.com/tmhedberg/matchit.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "bundle/ctrlp"]
-	path = bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule "bundle/ControlP"]
 	path = bundle/ControlP
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "bundle/jshint"]
-	path = bundle/jshint
-	url = https://github.com/walm/jshint.vim.git
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
