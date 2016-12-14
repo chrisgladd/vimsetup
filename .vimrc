@@ -22,7 +22,7 @@ set backupdir=~/.vim/tmp,/tmp,$HOME/Local\ Settings/Temp
 
 " windows stuff (ignore on Linux)
 if has('win32')
-	set gfn=Consolas:h13:cANSI 					" when on Windows use Consolas
+	set gfn=Consolas:h10:cANSI 					" when on Windows use Consolas
     
     " make cygwin the default shell on windows
     set shellxquote=
