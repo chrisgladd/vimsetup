@@ -42,3 +42,9 @@
 [submodule "bundle/vim-pug"]
 	path = bundle/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
+[submodule "bundle/vim-typescript"]
+	path = bundle/vim-typescript
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/vim-jsx"]
+	path = bundle/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git

@@ -401,3 +401,6 @@ set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
+
+" JSX Highlighting
+let g:jsx_ext_required = 0
