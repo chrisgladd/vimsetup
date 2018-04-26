@@ -31,6 +31,7 @@ if has('win32')
     set shellslash
 
     let g:ruby_path = ':C:\Ruby193\bin'
+    let g:skip_loading_mswin = 1
 
 
 elseif has('mac')
