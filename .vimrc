@@ -405,3 +405,6 @@ behave mswin
 
 " JSX Highlighting
 let g:jsx_ext_required = 0
+
+" Golang turn off automatic fmt
+let g:go_fmt_autosave = 0
