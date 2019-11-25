@@ -51,3 +51,6 @@
 [submodule "bundle/vim-solidity"]
 	path = bundle/vim-solidity
 	url = https://github.com/tomlion/vim-solidity.git
+[submodule "bundle/vim-graphql"]
+	path = bundle/vim-graphql
+	url = https://github.com/jparise/vim-graphql.git
