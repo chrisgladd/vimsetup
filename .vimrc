@@ -25,10 +25,10 @@ if has('win32')
 	set gfn=Consolas:h13:cANSI 					" when on Windows use Consolas
     
     " make cygwin the default shell on windows
-    set shellxquote=
-    set shellpipe=2>&1\|tee
-    set shellredir=>%s\ 2>&1
-    set shellslash
+    " set shellxquote=
+    " set shellpipe=2>&1\|tee
+    " set shellredir=>%s\ 2>&1
+    " set shellslash
 
     let g:ruby_path = ':C:\Ruby193\bin'
     let g:skip_loading_mswin = 1
@@ -415,11 +415,13 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  " bind K to grep word under cursor
-  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-  " bind \ (backward slash) to grep shortcut
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  " let g:ctrlp_use_caching = 0
 endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+" nnoremap \ :Ag<SPACE>
